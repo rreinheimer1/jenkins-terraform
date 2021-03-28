@@ -6,6 +6,13 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
     }
     stages {
+        stage ('S3 - creatre Bucket') {
+            steps {
+                script {
+                    createS3Bucket('bindrill-1238')
+                }
+            }
+        }
         stage('terraform init and apply - dev') {
             steps {
                 sh returnStatus: true, script: 'terraform workspace new dev'
@@ -26,4 +33,8 @@ pipeline {
 def getTerraformPath () {
     def tfHome = tool name: 'terraform-14', type: 'terraform'
     return tfHome
+}
+
+def createS3Bucket (bucketName) {
+    sh returnStatus: true, script: "aws s3 mb ${bucketName} --region=us-west-1"
 }
