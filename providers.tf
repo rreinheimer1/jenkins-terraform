@@ -1,5 +1,6 @@
 provider "aws" {
     region = var.region
+    profile = "reinhed" 
 }
 
 terraform {
@@ -7,5 +8,6 @@ terraform {
         bucket  = "bindrill-1238"
         key     = "terraform.tfstate"
         region  = "us-west-1"
+        profile = "reinhed" 
     }
 }
