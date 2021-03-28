@@ -4,7 +4,7 @@ provider "aws" {
 
 terraform {
     backend "s3" {
-        bucket  = "bindrill-1234"
+        bucket  = "bindrill-1237"
         key     = "terraform.tfstate"
         region  = var.region
     }
