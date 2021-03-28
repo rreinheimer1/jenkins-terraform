@@ -1,0 +1,11 @@
+provider "aws" {
+    region = var.region
+}
+
+terraform {
+    backend "s3" {
+        bucket  = "bindrill-1234"
+        key     = "terraform.tfstate"
+        region  = var.region
+    }
+}
